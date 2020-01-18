@@ -8,6 +8,6 @@ ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 
 RUN echo 'Hello, docker' > /var/www/index.html
-
+EXPOSE 8080
 ENTRYPOINT ["/usr/sbin/apache2"]
 CMD ["-D", "FOREGROUND"]
