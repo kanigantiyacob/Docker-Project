@@ -1,13 +1,6 @@
-FROM ubuntu:12.04
-
+FROM tomcat:8.5.37-jre8
+MAINTAINER yacobkaniganti@gmail.com
 RUN apt-get update
-RUN apt-get install -y apache2
-
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
-ENV APACHE_LOG_DIR /var/log/apache2
-
-RUN echo 'Hello, docker' > /var/www/index.html
+COPY index.html /usr/local/tomcat/webapps
 EXPOSE 8080
-ENTRYPOINT ["/usr/sbin/apache2"]
-CMD ["-D", "FOREGROUND"]
+CMD ["catalina.sh", "run"]
