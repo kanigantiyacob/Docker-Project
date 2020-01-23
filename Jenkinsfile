@@ -1,4 +1,8 @@
 node('Docker-Node'){
+    stage('clear all images and containers') {
+       sh label: '', script: 'docker rm $(docker ps -a -q) -f'
+       sh label: '', script: 'docker rmi $(docker images -q)' 
+}
     stage('clone from git repository ') {
        git 'https://github.com/kanigantiyacob/Docker-Project.git'
 }
